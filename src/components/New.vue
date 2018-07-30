@@ -1,11 +1,27 @@
 <template>
   <div>
     <h4>New Quote</h4>
+    <button @click="counter++" class="btn btn-info">Increased!</button>
+    <p>{{ counter }}</p>
   </div>
 </template>
 
 <script>
 export default {
+  data: function() {
+    return {
+      counter: 0
+    }
+  },
+  destroyed() {
+    console.log('Destroyed Has Been Called!');
+  },
+  deactivated() {
+    console.log('Components Was Deactivated!');
+  },
+  activated() {
+    console.log('Components Was Activated!');
+  }
 }
 </script>
 
@@ -18,6 +34,6 @@ div {
   text-align: center;
 }
 h4 {
-  color: skyblue;
+  color: green;
 }
 </style>

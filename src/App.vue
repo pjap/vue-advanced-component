@@ -7,10 +7,13 @@
         <button class="btn btn-info" @click="componentSelector = 'appAuthor'">Author</button>
         <button class="btn btn-success" @click="componentSelector = 'appNew'">New Quote</button>
         <span> You Are Here --> <strong>{{ componentSelector }}</strong></span>
-        <component :is="componentSelector">
-          <h2 slot="title">{{ quoteTitle }}</h2>
-          <p>Default Content</p>
-        </component>
+        <!-- Make Sure For The Component Keep Alive and No Destroy/Re Render All The Data -->
+        <keep-alive>
+          <component :is="componentSelector">
+            <h2 slot="title">{{ quoteTitle }}</h2>
+            <p>Default Content</p>
+          </component>
+        </keep-alive>
         <!-- If Using Slot All The Parent Data Will Render In Child Except Style -->
         <!-- <appQuote>
           <h2 slot="title">{{ quoteTitle }}</h2>
